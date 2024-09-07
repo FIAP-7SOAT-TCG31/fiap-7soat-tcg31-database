@@ -10,7 +10,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  tf-plan:
+  tf-plan-summary:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -52,32 +52,35 @@ jobs:
           script: |
             const output = `#### Terraform Format and Style 🖌\`${{ steps.fmt.outcome }}\`
             #### Terraform Initialization ⚙️\`${{ steps.init.outcome }}\`
-            <details>
-              <summary>Format and Style Output</summary>
+            <details><summary>Format and Style Output</summary>
+              
               \`\`\`\n
               ${{ steps.fmt.outputs.stdout }}
               \`\`\`
+            
             </details>
 
             #### Terraform Validation 🤖\`${{ steps.validate.outcome }}\`
-            <details>
-              <summary>Validation Output</summary>
+            <details><summary>Validation Output</summary>
+              
               \`\`\`\n
               ${{ steps.validate.outputs.stdout }}
               \`\`\`
+            
             </details>
 
             #### Terraform Plan 📖\`${{ steps.plan.outcome }}\`
-            <details>
-              <summary>Show Plan</summary>
+            <details><summary>Show Plan</summary>
+
               \`\`\`\n
               ${process.env.PLAN}
               \`\`\`
+            
             </details>
 
             *Pusher: @${{ github.actor }}*;
             *Action: \`${{ github.event_name }}\`*;
-            *Workflow: \`${{ github.workflow }}\`*`;
+            *Workflow: \`${{ github.workflow }}\`*;
 
             github.rest.issues.createComment({
               issue_number: context.issue.number,
