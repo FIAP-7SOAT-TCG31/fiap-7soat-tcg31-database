@@ -7,6 +7,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 env:
   TF_VAR_db_username: ${{ secrets.AWS_RDS_PG_ADMIN_USER }}
