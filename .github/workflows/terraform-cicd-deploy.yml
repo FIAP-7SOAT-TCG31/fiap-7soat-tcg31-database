@@ -1,4 +1,4 @@
-name: Terraform Summary
+name: Terraform IAC - Database
 
 on:
   pull_request:
@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  tf-plan-summary:
+  tf-summary:
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request'
     steps:
@@ -59,7 +59,7 @@ jobs:
             \`\`\`\n
             ${{ steps.validate.outputs.stdout }}
             \`\`\`
-            
+
             </details>
 
             #### Terraform Plan 📖\`${{ steps.plan.outcome }}\`
