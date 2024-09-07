@@ -5,4 +5,10 @@ terraform {
       version = "~> 5.0"
     }
   }
+
+  backend "s3" {
+    bucket = "tfstate-fiap-7soat-tcg31"
+    key    = "global/s3/database.tfstate"
+    region = "us-east-1"
+  }
 }

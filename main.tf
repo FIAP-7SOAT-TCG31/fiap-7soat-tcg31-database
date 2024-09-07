@@ -6,9 +6,9 @@ data "aws_vpc" "default" {
   default = true
 }
 
-resource "aws_security_group" "jedi" {
+resource "aws_security_group" "fiapburger" {
   vpc_id      = data.aws_vpc.default.id
-  name        = "jedi"
+  name        = "fiapburger"
   description = "Allow Inbound Traffic to Postgres"
 
   ingress {
@@ -19,8 +19,8 @@ resource "aws_security_group" "jedi" {
   }
 }
 
-resource "aws_db_instance" "jedi_db" {
-  identifier             = "jedi-db"
+resource "aws_db_instance" "fiapburger_db" {
+  identifier             = "fiapburger-db"
   instance_class         = "db.t3.micro"
   allocated_storage      = 5
   engine                 = "postgres"
@@ -29,5 +29,5 @@ resource "aws_db_instance" "jedi_db" {
   password               = var.db_password
   skip_final_snapshot    = true
   publicly_accessible    = true
-  vpc_security_group_ids = [aws_security_group.jedi.id]
+  vpc_security_group_ids = [aws_security_group.fiapburger.id]
 }
