@@ -51,14 +51,16 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const output = `#### Terraform Format and Style 🖌\`${{ steps.fmt.outcome }}\`
-            #### Terraform Initialization ⚙️\`${{ steps.init.outcome }}\`
-            <details><summary>Format and Style Output</summary>
+              <details>
+                <summary>Format and Style Output</summary>
               
-              \`\`\`\n
-              ${{ steps.fmt.outputs.stdout }}
-              \`\`\`
+                \`\`\`\n
+                ${{ steps.fmt.outputs.stdout }}
+                \`\`\`
             
             </details>
+            #### Terraform Initialization ⚙️\`${{ steps.init.outcome }}\`
+
 
             #### Terraform Validation 🤖\`${{ steps.validate.outcome }}\`
             <details><summary>Validation Output</summary>
