@@ -1,0 +1,14 @@
+name: Terraform CICD
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+jobs:
+  terraform-check:
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+      - name: Terraform Check
+        run: terraform fmt -check
