@@ -178,11 +178,7 @@ jobs:
 
       - name: Set Database URL
         run: |
-          echo ""DATABASE_URL="postgresql://$(terraform output --json | jq -r '.rds_username.value'):$(terraform output --json | jq -r '.rds_password.value')@$(terraform output --json | jq -r '.rds_endpoint.value')""" >> $GITHUB_ENV
-
-      - name: Set Database URL
-        run: |
-          echo ""DATABASE_URL="postgresql://$(terraform output --json | jq -r '.rds_username.value'):$(terraform output --json | jq -r '.rds_password.value')@$(terraform output --json | jq -r '.rds_endpoint.value')""" >> $GITHUB_ENV
+          echo ""DATABASE_URL="postgresql://$(terraform output --json | jq -r '.rds_username.value'):$(terraform output --json | jq -r '.rds_password.value')@$(terraform output --json | jq -r '.rds_endpoint.value')/postgres?schema=public""" >> $GITHUB_ENV
 
       - uses: actions/setup-node@v4
         with:
