@@ -15,3 +15,14 @@ output "rds_username" {
   value       = aws_db_instance.fiapburger_db.username
   sensitive   = true
 }
+
+output "rds_password" {
+  description = "RDS Instance Password"
+  value       = aws_db_instance.fiapburger_db.password
+  sensitive   = true
+}
+
+output "rds_endpoint" {
+  description = "RDS Instance endpoint"
+  value       = aws_db_instance.fiapburger_db.endpoint
+}
